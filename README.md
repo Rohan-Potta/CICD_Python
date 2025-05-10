@@ -29,6 +29,7 @@ docker service rm <service_name>
 # Remove an entire stack
 docker stack rm <stack_name>
 
+```
 
 ## CI/CD Pipeline with GitLab
 
