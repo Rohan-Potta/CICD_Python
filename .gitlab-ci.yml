@@ -1,0 +1,13 @@
+stages:
+  - deploy
+
+deploy-to-vm:
+  stage: deploy
+  only:
+    - main
+  script:
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" > llava.pem
+    - chmod 400 llava.pem
+    - ls -ltr
+    - ssh -o StrictHostKeyChecking=no -i "llava.pem" $USER@$VM_IP "cd /home/ubuntu/python_cicd && python3 deployment.py"
